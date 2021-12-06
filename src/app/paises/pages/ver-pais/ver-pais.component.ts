@@ -37,7 +37,7 @@ export class VerPaisComponent implements OnInit {
     )
     .subscribe( pais => {
       this.pais = pais[0];
-      // this.translations = Object.values(this.pais.translations);
+      this.translations = Object.values(this.pais.translations);
       this.languages = Object.values(this.pais.languages);
     })
   }
