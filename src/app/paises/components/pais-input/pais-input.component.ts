@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -15,6 +15,7 @@ export class PaisInputComponent implements OnInit {
   debouncer: Subject<string> = new Subject();
 
   termino: string = '';
+  @Input() placeholder: string = '';
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -27,7 +28,7 @@ export class PaisInputComponent implements OnInit {
 
         //! Llegados a este punto, quiere decir que el usuario DEJO de escribir y ya pasaron 300ms, por lo que ahora si 
         //! emitimos el valor 
-        console.log(this.onDebounce.emit(valor));
+        this.onDebounce.emit(valor);
       });
   }
 
